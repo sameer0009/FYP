@@ -15,13 +15,14 @@ if(isset($_POST['submit'])) {
 
     $sql = "INSERT INTO `tutify`.`users` (`fname`, `lname`, `phone`, `email`, `password`, `user_type`, `create_date`) VALUES ('$fname', '$lname', '$phone', '$email', '$pass', '$user_type', current_timestamp());";
 
-    if($user_type == 'Tutor') {
-        header("Location:tsa.php");
-        exit;
-    }
+    
 
     if($con->query($sql) == TRUE) {
         // echo "Data inserted successfully";
+        if($user_type == 'Tutor') {
+            header("Location:tsa.php");
+            exit;
+        }
     } else {
         echo "error:$sql<br> $con->error";
     }

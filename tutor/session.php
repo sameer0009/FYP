@@ -96,8 +96,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <h2>Create Class Session </h2>
         <div class="form-group" style="text-align: right;">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Create Class</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-video"></i> Create 1-1 Session</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='../video/groupCall.html'">Create Class</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='../video/1On1Call.html'">Create 1-1 Session</button>
             </form>
         </div>
     <div class="wrapper">

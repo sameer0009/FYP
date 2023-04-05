@@ -211,6 +211,13 @@ if(isset($_POST['submit'])) {
 
 
     <!-- Team Start -->
+    <?php
+require('./dbcon.php');
+
+$sql="SELECT users.fname,profile_t.picture,profile_t.experience FROM users JOIN profile_t ON users.id=profile_t.id";
+$sql_run=mysqli_query($con,$sql);
+
+?>
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="section-title text-center position-relative mb-5">
@@ -218,49 +225,29 @@ if(isset($_POST['submit'])) {
                 <h1 class="display-4">Meet Our Instructors</h1>
             </div>
             <div class="owl-carousel team-carousel position-relative" style="padding: 0 30px;">
+            <?php
+            if (mysqli_num_rows($sql_run)>0) {
+                while ($row=mysqli_fetch_assoc($sql_run)) {
+                    ?>
+                  
                 <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-1.jpg" alt="">
+                    <img class="img-fluid w-100" src="uploads/<?php echo $row['picture'];?>" alt="">
                     <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Instructor Name</h5>
-                        <p class="mb-2">Web Design & Development</p>
+                        <h5 class="mb-3"><?php echo $row['fname'];?></h5>
+                        <h5 class="mb-3"><?php echo $row['experience'];?></h5>
+                        <p class="mb-2">    </p>
                         <div class="d-flex justify-content-center">
-                           
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Instructor Name</h5>
-                        <p class="mb-2">Web Design & Development</p>
-                        <div class="d-flex justify-content-center">
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-3.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Instructor Name</h5>
-                        <p class="mb-2">Web Design & Development</p>
-                        <div class="d-flex justify-content-center">
-                            
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-item">
-                    <img class="img-fluid w-100" src="img/team-4.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Instructor Name</h5>
-                        <p class="mb-2">Web Design & Development</p>
-                        <div class="d-flex justify-content-center">
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    
+            
+            <?php
+                }  
+            }
+            ?>
+             </div>  
+           
         </div>
     </div>
     <!-- Team End -->

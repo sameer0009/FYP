@@ -17,9 +17,11 @@ $sql = "INSERT INTO tsa_questions (subject, marks, question, option1, option2, o
         VALUES ('$subject', '$marks', '$question', '$option1', '$option2', '$option3', '$option4', '$correct_answer')";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Question added successfully.";
+    $message = "Question added successfully.";
+    echo "<script type='text/javascript'>alert('$message'); window.location.href = 'tsa_question.php';</script>";
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    $error = "Error: " . $sql . "<br>" . mysqli_error($conn);
+    echo "<script type='text/javascript'>alert('$error');</script>";
 }
 
 // Close the database connection

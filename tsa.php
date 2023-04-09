@@ -41,7 +41,7 @@ if ($answer == $correct_answer) {
     $score++;
     if ($score > 0) {
         
-        header("Location:index.php");
+        header("Location:signin.php");
 
 
         exit();

@@ -45,7 +45,7 @@
           <a class="nav-link" href="#tutor-list">Update Record</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./tsa_question.php">TSA</a>
+          <a class="nav-link" href="./tsa_subject.php">TSA</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="notification.php">Notification</a>

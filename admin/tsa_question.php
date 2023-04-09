@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['user_name'])) {
   header('Location: ../join.php'); // redirect to the login page if the student is not logged in
-exit();
+  exit();
 }
 ?>
 <!DOCTYPE html>
@@ -11,15 +11,15 @@ exit();
 include ('./a_header.php'); 
 ?>
      
-  <br>
+<br>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Teacher Selection Assessments</title>
     <link rel="stylesheet" href="style.css">
-    <link href="../css/a_tsa_style.css"rel="stylesheet">
-   
+    <link href="../css/a_tsa_style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -27,16 +27,10 @@ include ('./a_header.php');
     <h2 style="text-align:center; font-size: 36px; color: #333333;">Tutor Selection Assessment</h2>
         <form method="post" action="save_tsa.php">
             <label for="subject">Subject:</label>
-            <select id="subject" name="subject" required>
-                <option value="">--Select Subject--</option>
-                <option value="Math">Math</option>
-                <option value="Science">Science</option>
-                <option value="History">History</option>
-                <option value="English">English</option>
-            </select>
+            <input type="text" id="subject" name="subject" redirect>
             <label for="question">Question ID:</label>
             <input type="number" id="ID" name="ID" required>
-            <label for="marks" > Marks: </label>
+            <label for="marks">Marks:</label>
             <input type="number" id="marks" name="marks" required>
             <label for="question">Question:</label>
             <input type="text" id="question" name="question" required>
@@ -53,6 +47,7 @@ include ('./a_header.php');
             <input type="hidden" name="subject_name" value="">
             <br>
             <button type="submit" class="btn btn-primary">Save Question</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">Back</button>
         </form>
     </div>
 </body>

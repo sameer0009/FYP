@@ -81,7 +81,7 @@ while ($row = mysqli_fetch_array($query_run)) {
                                 <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2"><?php echo $row['course_intsructor']; ?></h6>
                                 <h1 class="display-4"><?php echo $row['course_name']; ?></h1>
                             </div>
-                            <img class="img-fluid rounded w-100 mb-4" src="<?php echo $row['course_image']; ?>" alt="<?php echo $row['course_name']; ?> Image">
+                            <img class="img-fluid rounded w-100 mb-4" src="uploads/<?php echo $row['course_image']; ?>" alt="<?php echo $row['course_name']; ?> Image">
                             <p><?php echo $row['course_description']; ?></p>
                         </div>
                     </div>

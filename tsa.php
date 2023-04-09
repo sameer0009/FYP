@@ -1,105 +1,146 @@
 <?php
-// Connect to the database
-$conn = mysqli_connect('localhost', 'root', '', 'tutify');
-
-// Get all the questions from the database
-$sql = "SELECT * FROM tsa_questions";
-$result = mysqli_query($conn, $sql);
-
-// Store the questions in an array
-$questions = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $questions[] = $row;
-}
-
-// Shuffle the questions
-shuffle($questions);
-
-// Initialize the score
-$score = 0;
-
-// Check if the form has been submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Prepare the SQL statement
-    $sql = "SELECT correct_answer FROM tsa_questions WHERE id = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, 'i', $question_id);
-
-    // Loop through all the questions
-    foreach ($questions as $question) {
-        // Get the submitted answer for this question
-        $answer = $_POST['answer_' . $question['id']];
-
-        // Execute the prepared statement to get the correct answer for this question
-        $question_id = $question['id'];
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $correct_answer);
-        mysqli_stmt_fetch($stmt);
-
-       // Check if the submitted answer is correct
-if ($answer == $correct_answer) {
-    $score++;
-    if ($score > 0) {
-        
-        header("Location:signin.php");
 
 
-        exit();
-    
-    }
-    else
-    {
-        
-        header ("Location:signup.php");
+// Connect to the database and add a new subject if the form has been submitted
+include('./dbcon.php');
 
-    }
 
-}
-    }
 
-    // Close the prepared statement
-    mysqli_stmt_close($stmt);
-
-    // Print the score
-    echo '<h2>Your score is: ' . $score . '/' . count($questions) . '</h2>';
-    exit();
-}
+// Fetch all subjects from the database
+$sql = "SELECT * FROM tblsubjects";
+$result = mysqli_query($con, $sql);
+$subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Teacher Selection Assessments</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<style>
+    /* Global styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.row {
+  margin: 0 -10px;
+}
+
+.col-md-4 {
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+/* Media queries */
+@media (max-width: 767px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+}
+
+</style>
+
 </head>
 <body>
-    <div class="container my-5">
-        <h1>Quiz</h1>
+  <div class="container">
+    <h1>Select a Subject to take Assessment:</h1>
 
-        <form method="post">
-            <?php foreach ($questions as $question) : ?>
-                <div class="card my-3">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $question['question']; ?></h5>
-                        <?php $options = array($question['option1'], $question['option2'], $question['option3'], $question['option4']); shuffle($options); ?>
-                        <?php foreach ($options as $option) : ?>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="answer_<?php echo $question['id']; ?>" value="<?php echo $option; ?>" required>
-                                <label class="form-check-label"><?php echo $option; ?></label>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+    <!-- Display all subjects as cards -->
+    <div class="row">
+      <?php foreach ($subjects as $subject): ?>
+        <div class="col-md-4 mt-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $subject['subject']; ?></h5>
+              <a href="Tsa_as.php?subject_id=<?php echo $subject['id']; ?>" class="btn btn-primary">take Quiz</a>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
     </div>
-
-   
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </div>
 </body>
 </html>

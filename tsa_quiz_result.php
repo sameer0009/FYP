@@ -1,3 +1,66 @@
+<head>
+    <style>
+        /* Style the container element */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Style the heading elements */
+h1, h2, h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* Style the button element */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0069d9;
+}
+
+/* Style the radio button inputs */
+input[type=radio] {
+  margin-right: 10px;
+}
+
+/* Style the form element */
+form {
+  margin-top: 20px;
+}
+
+    </style>
+</head>
 <?php
 session_start();
 

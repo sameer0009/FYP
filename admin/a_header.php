@@ -21,6 +21,16 @@
 <!-- Customized Bootstrap Stylesheet -->
 <link href="../css/style.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- plugins:css -->
+<link rel="stylesheet" href="assets/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="assets/vendors/chartist/chartist.min.css">
+    <link rel="stylesheet" href="assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
  
 </head>
 <body>

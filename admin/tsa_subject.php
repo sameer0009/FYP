@@ -23,6 +23,10 @@ $subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <!DOCTYPE html>
 <html>
 <?php include ('./a_header.php'); ?>
+<head>
+<link href="../css/tsa_styles.css" rel="stylesheet">
+
+</head>
 <body>
   <div class="container">
     <h1>Select a Subject to Take Test:</h1>
@@ -35,7 +39,7 @@ $subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
       </div>
       <button type="submit" name="add_subject" class="btn btn-primary">Add Subject</button>
     </form>
-
+    <div continer>
     <!-- Display all subjects as cards -->
     <div class="row">
       <?php foreach ($subjects as $subject): ?>
@@ -51,6 +55,7 @@ $subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </div>
       <?php endforeach; ?>
     </div>
+  </div>
   </div>
 </body>
 </html>

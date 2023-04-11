@@ -44,7 +44,7 @@ $result = mysqli_query($con, $sql);
 
 <!-- Bootstrap notification panel -->
 <div class="card">
-  <div class="card-header bg-primary text-white">
+  <div class="card-header bg-danger text-white">
     Notifications
   </div>
   <div class="card-body">
@@ -63,7 +63,6 @@ $result = mysqli_query($con, $sql);
       <?php endif; ?>
     </form>
 
-   <!-- Notification list -->
    
 
   </div>

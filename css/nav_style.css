@@ -1,0 +1,31 @@
+.navbar {
+    background-color: #ffffff; /* set background color */
+    border-bottom: 1px solid #e9ecef; /* add bottom border */
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem; /* set font size */
+    font-weight: bold; /* set font weight */
+  }
+  
+  .nav-link {
+    font-size: 1.3rem; /* set font size */
+    font-weight: 600; /* set font weight */
+    color: #343a40; /* set text color */
+    margin-right: 20px; /* add right margin */
+  }
+  
+  .nav-link:hover {
+    color: #00ff40; /* change text color on hover */
+  }
+  
+  .btn-danger {
+    background-color: #dc3545; /* set background color */
+    border-color: #dc3545; /* set border color */
+  }
+  
+  .btn-danger:hover {
+    background-color: #c823b2; /* change background color on hover */
+    border-color: #218cbdbe; /* change border color on hover */
+  }
+  

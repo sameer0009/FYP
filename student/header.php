@@ -20,6 +20,8 @@
 <!-- Customized Bootstrap Stylesheet -->
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/t_dash_style.css" rel="stylesheet">
+<link href="../css/nav_style.css" rel="stylesheet">
+
 <link href="../css/Couse_card_style.css"rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Student Panel</title>

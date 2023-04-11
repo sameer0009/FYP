@@ -7,20 +7,39 @@ if (!isset($_SESSION['user_name'])) {
 ?>
 <!DOCTYPE html>
 <html>
+    <head>
+    <link rel="stylesheet" href="../css/a_list_style.css">
+    </head>
 <?php
 include ('./a_header.php'); 
 ?>
      
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="class-header">
-                    <h4 style="text-align:center;">Users Managment</h4>
+                    <h4 style="text-align:center;">Users Management</h4>
                 </div>
                 <div class="card-body">
-                    <table  class="table table-bordered table-stripe">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" id="search" class="form-control" placeholder="Search">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <select id="filter" class="form-control">
+                                    <option value="">Select User Type</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="Student">Student</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-stripe">
                         <thead>
                             <tr style="color:black;">
                                 <th>Id</th>
@@ -42,34 +61,49 @@ include ('./a_header.php');
     </div>
 </div>
     
-    <script>
-      $(document).ready(function () {
+<script>
+    $(document).ready(function() {
         getdata();
-      });
 
-      function getdata(){
-        $.ajax({
-          type: "GET",
-          url: "fetch.php",
-          success: function (response) {
-           // console.log(response);
-            $.each(response, function (key, value) { 
-           // console.log(value['fname']);
-           $('.usersdata').append( '<tr>'+
-                                    '<td>'+value['id']+'</td>\
-                                    <td>'+value['fname']+'</td>\
-                                    <td>'+value['lname']+'</td>\
-                                    <td>'+value['email']+'</td>\
-                                    <td>'+value['phone']+'</td>\
-                                    <td>'+value['user_type']+'</td>\
-                                    <td>'+value['create_date']+'</td>\
-                               </tr>');
-
+        // Search functionality
+        $('#search').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            $('.usersdata tr').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
-          }
         });
-      }
-    </script>
+
+        // Filter functionality
+        $('#filter').on('change', function() {
+            var value = $(this).val().toLowerCase();
+            $('.usersdata tr').filter(function() {
+                $(this).toggle($(this).find('td:nth-child(6)').text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    function getdata(){
+        $.ajax({
+            type: "GET",
+            url: "fetch.php",
+            success: function (response) {
+                // console.log(response);
+                $.each(response, function (key, value) { 
+                // console.log(value['fname']);
+                $('.usersdata').append( '<tr>'+
+                    '<td>'+value['id']+'</td>\
+                    <td>'+value['fname']+'</td>\
+                    <td>'+value['lname']+'</td>\
+                    <td>'+value['email']+'</td>\
+                    <td>'+value['phone']+'</td>\
+                    <td>'+value['user_type']+'</td>\
+                    <td>'+value['create_date']+'</td>\
+                </tr>');
+                });
+            }
+        });
+    }
+</script>
      
 </body>
 </html>

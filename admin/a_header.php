@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
+<!-- Add this to the head section of your HTML file -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+XRMa9XfLydia1EmW1Kk5V7ZdJlqo7" crossorigin="anonymous">
 
 
     <!-- Google Web Fonts -->
@@ -21,6 +23,7 @@
 <!-- Customized Bootstrap Stylesheet -->
 <link href="../css/style.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="../css/nav_style.css" rel="stylesheet">
 <!-- plugins:css -->
 <link rel="stylesheet" href="assets/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -31,7 +34,8 @@
     <link rel="stylesheet" href="assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
- 
+    
+    
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -50,9 +54,6 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#transactions">Transactions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#tutor-list">Update Record</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./tsa_subject.php">TSA</a>

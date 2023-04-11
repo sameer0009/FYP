@@ -18,7 +18,22 @@ if (isset($_POST['add_subject'])) {
 $sql = "SELECT * FROM tblsubjects";
 $result = mysqli_query($con, $sql);
 $subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+
+// delete button 
+if (isset($_POST['delete_subject'])) {
+  $subject_id = $_POST['subject_id'];
+  $sql = "DELETE FROM tblsubjects WHERE id = '$subject_id'";
+  $result = mysqli_query($con, $sql);
+  if ($result) {
+    header('Location: tsa_subject.php');
+    exit();
+  }
+}
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +44,7 @@ $subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </head>
 <body>
   <div class="container">
-    <h1>Select a Subject to Take Test:</h1>
+    <h1>ADD a Subject to Take Test</h1>
 
     <!-- Form to add a new subject -->
     <form method="post" action="">
@@ -50,6 +65,11 @@ $subjects = mysqli_fetch_all($result, MYSQLI_ASSOC);
               <a href="tsa_question.php?subject_id=<?php echo $subject['id']; ?>" class="btn btn-primary">Add question</a>
               <br><br>
               <a href="tsa_question_list.php?subject_id=<?php echo $subject['id']; ?>" class="btn btn-secondary">Show added questions</a>
+              <br><br>
+              <form method="post" action="">
+          <input type="hidden" name="subject_id" value="<?php echo $subject['id']; ?>">
+          <button type="submit" name="delete_subject" class="btn btn-danger">Delete</button>
+        </form>            
             </div>
           </div>
         </div>

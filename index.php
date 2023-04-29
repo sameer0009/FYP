@@ -1,35 +1,70 @@
 <?php
-session_start();
+require '../fyp-main/dbcon.php';
+require '../fyp-main/PHPMailer/src/PHPMailer.php';
+require '../fyp-main/PHPMailer/src/SMTP.php';
+require '../fyp-main/PHPMailer/src/Exception.php';
 
-include 'dbcon.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-if(isset($_POST['submit'])) {
-    $fname= mysqli_real_escape_string($con,$_POST['fname']);
-    $lname= mysqli_real_escape_string($con,$_POST['lname']);
-    $email= mysqli_real_escape_string($con,$_POST['email']);
-    $phone= mysqli_real_escape_string($con,$_POST['phone']);
-    $password= mysqli_real_escape_string($con,$_POST['password']);
-    $user_type= mysqli_real_escape_string($con,$_POST['type']);
+if (isset($_POST['submit'])) {
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $phone = $_POST['phone'];
+  $email = $_POST['email'];
+  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+  $user_type = $_POST['type'];
 
-    $pass = password_hash($password, PASSWORD_BCRYPT);
+  // Check if the email is already registered
+  $sql = "SELECT * FROM users WHERE email = '$email'";
+  $result = mysqli_query($con, $sql);
 
-    $sql = "INSERT INTO `tutify`.`users` (`fname`, `lname`, `phone`, `email`, `password`, `user_type`, `create_date`) VALUES ('$fname', '$lname', '$phone', '$email', '$pass', '$user_type', current_timestamp());";
+  if (mysqli_num_rows($result) > 0) {
+    echo "Email already exists. Please choose a different email.";
+    exit();
+  }
 
-    
+  // Generate a verification code
+  $verification_code = bin2hex(random_bytes(16));
 
-    if($con->query($sql) == TRUE) {
-        // echo "Data inserted successfully";
-        if($user_type == 'Tutor') {
-            header("Location:tsa.php");
-            exit;
-        }
+  // Insert the user data into the database
+  $sql = "INSERT INTO users (fname, lname, phone, email, password, user_type, verification_code) VALUES ('$fname', '$lname', '$phone', '$email', '$password', '$user_type', '$verification_code')";
+  mysqli_query($con, $sql);
+
+  // Send verification email
+  $mail = new PHPMailer();
+  $mail->isSMTP();
+  $mail->SMTPAuth = true;
+  $mail->SMTPSecure = 'tls';
+  $mail->Host = 'smtp.gmail.com'; // Specify your SMTP server
+  $mail->Port = 587; // Specify the SMTP port
+  $mail->Username = 'tutify6@gmail.com'; // Your SMTP username
+  $mail->Password = 'cvdusmbzsatayahq'; // Your SMTP password
+
+  $mail->setFrom('tutify6@gmail.com', 'TUTIFY'); // Sender's email and name
+  $mail->addAddress($email, $fname . ' ' . $lname); // Recipient's email and name
+
+  $mail->Subject = 'Email Verification';
+  $mail->Body = "Please click the following link to verify your email:\n";
+  $mail->Body .= "http://yourdomain.com/verify_email.php?code=$verification_code";
+
+  if ($mail->send()) {
+    // Redirect based on user type
+    if ($user_type === 'Tutor') {
+      header('Location: tsa.php');
     } else {
-        echo "error:$sql<br> $con->error";
+      header('Location: signin.php');
     }
-
-    $con->close();
+    exit();
+  } else {
+    echo 'Error sending email: ' . $mail->ErrorInfo;
+  }
 }
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">

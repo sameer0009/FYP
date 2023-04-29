@@ -1,10 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_name'])) {
-  header('Location: ../signin.php'); // redirect to the login page if the student is not logged in
-exit();
+  header('Location: ../signin.php');
+  exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html>
  
@@ -18,13 +19,17 @@ include('./header.php');
   $query="SELECT course_id,course_name,course_description,course_duration,course_price,course_intsructor FROM course";
   $query_run=mysqli_query($con,$query);
   $course=mysqli_num_rows($query_run);
+  
   ?>
   <div class="row">
    <?php
   if($course>0)
   {
     while ($row=mysqli_fetch_array($query_run)) {
-      ?>
+     
+     
+     
+     ?>
   <div class="card" style="width: 25rem; margin: 2rem 0rem 1rem 10rem; ">
   <div class="card-body">
   <h4 class="card-text">Instrcutor:<?php echo $row['course_intsructor']?></h4>
@@ -34,9 +39,10 @@ include('./header.php');
     <p class="card-text"><b>Price:</b><?php echo $row['course_price']?> PKR</p>
     <p class="card-text"><b>Description:</b><?php echo $row['course_description']?></p>
     
-    <form action="course_en.php" method="post">
+    <form action="enroll.php" method="post">
       <input type="hidden" name="course_id" value="<?php echo $row['course_id']?>">
-    <button input="submit"  class="btn btn-primary">Enroll</button>
+      <input type="hidden" name="course_price" value="<?php echo $row['course_price']?>">
+      <button type="submit" class="btn btn-primary">Enroll</button>
     </form>
   </div>
 </div> 

@@ -224,7 +224,7 @@ function drawChart() {
 
     var options = {
         title: 'Total Users and Courses',
-        pieHole: 0.2,
+        pieHole: 0.3,
         colors: ['#4285F4', '#DB4437']
     };
 

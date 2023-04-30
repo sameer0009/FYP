@@ -25,7 +25,7 @@
   --info: #17a2b8;
   --warning: #ffc107;
   --danger: #dc3545;
-  --light: #ECF4FF;
+  --light: #02a9eb;
   --dark: #120F2D;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
@@ -6415,9 +6415,26 @@ button.bg-danger:focus {
   background-color: #bd2130 !important;
 }
 
+
+
+
+
+
+
+
+
+
+
+
 .bg-light {
   background-color: #ECF4FF !important;
 }
+
+
+
+
+
+
 
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,

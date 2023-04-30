@@ -25,7 +25,7 @@
     <label for="phone"><b>Phone Number</b></label>
     <input type="text" id="phone" placeholder="Enter Phone Number" name="phone" required>
     <label for="email"><b>Email</b></label>
-    <input type="text" id="email" placeholder="Enter Email" name="email" required>
+    <input type="email" id="email" placeholder="Enter Email" name="email" required>
 
     <label for="password"><b>Password</b></label>
     <input type="password" id="password" placeholder="Enter Password" name="password" required>

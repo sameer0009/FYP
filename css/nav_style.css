@@ -1,31 +1,38 @@
 .navbar {
-    background-color: #ffffff; /* set background color */
-    border-bottom: 1px solid #e9ecef; /* add bottom border */
-  }
-  
-  .navbar-brand {
-    font-size: 1.5rem; /* set font size */
-    font-weight: bold; /* set font weight */
-  }
-  
-  .nav-link {
-    font-size: 1.3rem; /* set font size */
-    font-weight: 600; /* set font weight */
-    color: #343a40; /* set text color */
-    margin-right: 20px; /* add right margin */
-  }
-  
-  .nav-link:hover {
-    color: #00ff40; /* change text color on hover */
-  }
-  
-  .btn-danger {
-    background-color: #dc3545; /* set background color */
-    border-color: #dc3545; /* set border color */
-  }
-  
-  .btn-danger:hover {
-    background-color: #c823b2; /* change background color on hover */
-    border-color: #218cbdbe; /* change border color on hover */
-  }
-  
+  background-color: #ffffff;
+  border-bottom: 1px solid #e9ecef;
+  height: 80px; /* Adjust the height as desired */
+  transition: height 0.3s;
+}
+
+.navbar:hover {
+  height: 80px; /* Adjust the expanded height as desired */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-link {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-right: 20px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #00ff40;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #c823b2;
+  border-color: #218cbdbe;
+}

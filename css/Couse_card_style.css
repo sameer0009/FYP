@@ -1,26 +1,52 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
-    height: auto;
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #000000;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px #ccc;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: auto;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #ccc;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+  animation: fadeIn 0.5s ease-in-out, tilt 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .course-card h4 {
-    margin-top: 0;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .course-card p {
-    margin-bottom: 10px;
+}
+
+@keyframes tilt {
+  0% {
+    transform: rotateY(0);
   }
-  
-  .course-card button {
-    margin-top: 20px;
+  50% {
+    transform: rotateY(5deg);
   }
-  
+  100% {
+    transform: rotateY(0);
+  }
+}
+
+.card:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: inherit;
+  filter: blur(20px);
+  z-index: -1;
+}

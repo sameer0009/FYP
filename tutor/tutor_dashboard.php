@@ -6,22 +6,85 @@ if (!isset($_SESSION['user_name'])) {
   header('Location: ../signin.php'); // Redirect to the login page if the user is not logged in
   exit();
 }
+
+include('../dbcon.php');
+
+// Query to get total number of courses
+$sql = "SELECT COUNT(*) as total_courses FROM course";
+$result = $con->query($sql);
+
+// Initialize variable to store total number of courses
+$total_courses = 0;
+
+if ($result->num_rows > 0) {
+  // Output data of each row
+  while($row = $result->fetch_assoc()) {
+    $total_courses = $row["total_courses"];
+  }
+}
+
+// Generate graph data
+$graphData = array(
+    array('Category', 'Count'),
+    array('Total Courses', $total_courses)
+);
+
+// Convert graph data to JSON format
+$graphJson = json_encode($graphData);
+
 ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-<?php
-include('./t_head.php');
-?>
-<body>
-   
-    <?php
-    include('./t_header.php');
-    ?>
+  <head>
+  <!-- Include the Google Charts library -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable(<?php echo $graphJson; ?>);
+
+        var options = {
+            title: 'Total Courses',
+            pieSliceText: 'value',
+            is3D: true,
+            legend: 'none',
+            slices: {
+                1: { offset: 0.2 }, // Explode the second slice (index 1)
+            }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+</script>
+
+  </head>
+  <body>
+    <?php include('./t_head.php'); ?>
+    <?php include('./t_header.php'); ?>
 
     <div class="container my-3">
+    
+       
+       
+        <h3>Analytics</h3>
+        <div id="analytics">
+        </div>
+        <div id="piechart" style="width: 500px; height: 300px;"></div>
+    
+
+      
+
       <h3>Notifications</h3>
         <?php
-        include ('../dbcon.php');
+      
 
     $user_id = 2; // Replace with actual tutor ID
     $sql = "SELECT * FROM notifications WHERE user_id = $user_id ORDER BY created_at DESC";
@@ -68,6 +131,9 @@ include('./t_head.php');
       </div>
     </div>
     </div>
+
+  
+          
 
 
 

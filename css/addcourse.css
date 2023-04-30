@@ -1,0 +1,126 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    flex: 0 100px 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #ccc;
+    text-align: left;
+  }
+  
+  
+  
+  h3 {
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  
+  
+  .card h4 {
+    margin-top: 0;
+  }
+  
+  .card p {
+    margin-bottom: 10px;
+  }
+  
+  .card button {
+    margin-top: 20px;
+  }
+  
+  .row {
+    margin-bottom: 15px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn {
+    border-radius: 0;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #2998ff;
+    border-color: #2962FF;
+    color: #fff;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .btn-danger {
+    background-color: #D32F2F;
+    border-color: #D32F2F;
+    color: #fff;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .btn-primary:hover,
+  .btn-primary:focus,
+  .btn-primary:active {
+    background-color: #2452D9;
+    border-color: #2452D9;
+  }
+  
+  .btn-danger:hover,
+  .btn-danger:focus,
+  .btn-danger:active {
+    background-color: #C62828;
+    border-color: #C62828;
+  }
+  
+  .card-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .card-text {
+    margin-bottom: 5px;
+  }
+  
+  /* Additional Styling */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .container-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .container form {
+    margin-top: 20px;
+  }
+  
+  .card:last-child {
+    margin-bottom: 0;
+  }
+  
+  .card-body {
+    margin: 10px;
+  }
+  

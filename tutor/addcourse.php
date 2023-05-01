@@ -75,7 +75,7 @@
     if ($course > 0) {
       while ($row = mysqli_fetch_array($query_run)) {
     ?>
-        
+        <div class="row">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Name: <?php echo $row['course_name']; ?></h4>
@@ -90,7 +90,7 @@
         </form>
       </div>
     </div>
-   
+    </div>
     <?php
       }
     }

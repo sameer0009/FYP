@@ -32,7 +32,20 @@ $graphData = array(
 // Convert graph data to JSON format
 $graphJson = json_encode($graphData);
 
+$user_name = $_SESSION['user_name'];
+
+$sql = "SELECT users.fname, users.lname, users.phone, users.email, 
+               profile_t.address, profile_t.postal_code, profile_t.area, profile_t.country, profile_t.state, 
+               profile_t.ehistory, profile_t.experience, profile_t.degree, profile_t.picture, profile_t.hourly_rate
+        FROM users
+        JOIN profile_t ON users.id = profile_t.id
+        WHERE users.fname = '$user_name'";
+$result = mysqli_query($con, $sql);
 ?>
+
+
+
+
 
 
 
@@ -70,8 +83,33 @@ $graphJson = json_encode($graphData);
     <?php include('./t_head.php'); ?>
     <?php include('./t_header.php'); ?>
 
-    <div class="container my-3">
     
+    <div class="container my-3">
+  <div class="row">
+    <?php while ($row = mysqli_fetch_assoc($result)): ?>
+      <div class="col-md-7">
+        <div class="card">
+          <img class="card-img-top" src="../uploads/?php echo $row['picture']; ?>" alt="Profile Picture">
+          <div class="card-body">
+            <h5 class="card-title"><?php echo $row['fname'] . ' ' . $row['lname']; ?></h5>
+            <p class="card-text">Email: <?php echo $row['email']; ?></p>
+            <p class="card-text">Phone: <?php echo $row['phone']; ?></p>
+            <p class="card-text">Address: <?php echo $row['address']; ?></p>
+            <p class="card-text">Hourly Rate: $<?php echo $row['hourly_rate']; ?></p>
+          </div>
+        </div>
+      </div>
+    <?php endwhile; ?>
+  </div>
+</div>
+
+           
+                  
+<div class="container my-3"> 
+  
+
+    
+  
        
        
         <h3>Analytics</h3>

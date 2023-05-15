@@ -1,0 +1,112 @@
+form {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .rating-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  input[type="submit"] {
+    margin: 1rem auto;
+    background-color: #4c82af;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #3e5a8e;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #4c90af;
+  }
+  .rating {
+    display: inline-block;
+    unicode-bidi: bidi-override;
+    color: #ccc;
+    font-size: 25px;
+    height: 25px;
+    width: 125px;
+    margin: 0;
+    position: relative;
+    padding: 0;
+  }
+  
+  .rating-star {
+    display: inline-block;
+    margin: 0 8px; /* Adjust the margin as per your preference */
+    margin-top: 0%;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  
+  .rating-star:before {
+    content: '\2605';
+    position: absolute;
+    opacity: 0.3;
+    color: #ccc; /* Default star color */
+  }
+  
+  .rating:hover .rating-star:before,
+  .rating:hover .rating-star:hover:before,
+  .rating .rating-star:hover:before {
+    opacity: 1;
+    color: #ffbf00; /* Hovered star color */
+  }
+  
+  .rating input[type="radio"] {
+    display: none;
+  }
+  
+  .rating input[type="radio"]:checked ~ .rating-star:before {
+    opacity: 1;
+    color: #ffbf00; /* Selected star color */
+  }
+  

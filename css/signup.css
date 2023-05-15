@@ -124,6 +124,17 @@ p a {
   background-color: #45a09b;
 }
 
+button.back-button {
+  padding: 12px 20px;
+  background-color: #4285f4;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  float: right;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
 .container img {
   display: block;
   margin: 0 auto;

@@ -39,7 +39,7 @@ include('./header.php');
     <p class="card-text"><b>Price:</b><?php echo $row['course_price']?> PKR</p>
     <p class="card-text"><b>Description:</b><?php echo $row['course_description']?></p>
     
-    <form action="enroll.php" method="post">
+    <form action="payment.php" method="post">
       <input type="hidden" name="course_id" value="<?php echo $row['course_id']?>">
       <input type="hidden" name="course_price" value="<?php echo $row['course_price']?>">
       <button type="submit" class="btn btn-primary">Enroll</button>

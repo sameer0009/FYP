@@ -115,10 +115,13 @@ while ($row = mysqli_fetch_array($query_run)) {
                             </div>
                             <h5 class="text-white py-3 px-4 m-0">Course Price: <?php echo $row['course_price']; ?> PKR</h5>
                             <div class="py-3 px-4">
-                                <form action="course_en.php" method="post">
-                                    <input type="hidden" name="course_id" value="<?php echo $row['course_id']; ?>">
-                                    <button type="submit" class="btn btn-block btn-secondary py-3 px-5" name="enroll_now">Enroll Now</button>
-                                </form>
+                            <form action="<?php echo isset($_SESSION['user_name']) ? 'payment.php' : '../fyp-main/signin.php'; ?>" method="post">
+                            <input type="hidden" name="course_id" value="<?php echo $row['course_id']; ?>">
+                            <button type="submit" class="btn btn-block btn-secondary py-3 px-5" name="enroll_now">
+                                <?php echo isset($_SESSION['user_name']) ? 'Enroll Now' : 'Sign In to Enroll'; ?>
+                            </button>
+                            </form>
+
                             </div>
                         </div>
                     </div>

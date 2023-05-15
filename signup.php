@@ -34,7 +34,7 @@
     <br>
     <input type="radio" id="student" name="type" value="Student">
     <label for="student">Student</label><br>
-    <input type="radio" id="teacher" name="type" value="Tutor">
+    <input type="radio" id="teacher" name="type" value="Teacher">
     <label for="teacher">Tutor</label><br>
 
     <p>By creating an account you agree to our <a href="./terms_policy.php" style="color:dodgerblue">Terms & Privacy</a>.</p>
@@ -42,6 +42,8 @@
     <div class="clearfix">
       <button type="submit" name="submit" class="signupbtn">Sign Up</button>
     </div>
+    <button onclick="window.location.href = 'join.php';" class="back-button">Back</button>
+
   </div>
 </form>
 </body>

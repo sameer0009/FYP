@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
   $mail->SMTPAuth = true;
   $mail->SMTPSecure = 'tls';
   $mail->Host = 'smtp.gmail.com'; // Specify your SMTP server
-  $mail->Port = 587; // Specify the SMTP port
+  $mail->Port =  587 ;  // Specify the SMTP port
   $mail->Username = 'tutify6@gmail.com'; // Your SMTP username
   $mail->Password = 'cvdusmbzsatayahq'; // Your SMTP password
 
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 
   if ($mail->send()) {
     // Redirect based on user type
-    if ($user_type === 'Tutor') {
+    if ($user_type === 'Teacher') {
       header('Location: tsa.php');
     } else {
       header('Location: signin.php');

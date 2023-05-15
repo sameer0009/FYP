@@ -47,9 +47,6 @@ $result = mysqli_query($con, $sql);
 
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -89,7 +86,7 @@ $result = mysqli_query($con, $sql);
     <?php while ($row = mysqli_fetch_assoc($result)): ?>
       <div class="col-md-7">
         <div class="card">
-          <img class="card-img-top" src="../uploads/?php echo $row['picture']; ?>" alt="Profile Picture">
+          <img class="card-img-top" style="width:100px"src="../uploads/<?php echo $row['picture']; ?>" alt="Profile Picture ">
           <div class="card-body">
             <h5 class="card-title"><?php echo $row['fname'] . ' ' . $row['lname']; ?></h5>
             <p class="card-text">Email: <?php echo $row['email']; ?></p>

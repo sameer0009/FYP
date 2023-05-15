@@ -45,10 +45,7 @@
           <a class="nav-link" href="./course_en.php">Course</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./assessment.php">Assessments</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#notifications">Notifications</a>
+          <a class="nav-link" href="#">Assessments</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#tutor-list">Tutor List</a>
